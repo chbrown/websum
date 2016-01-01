@@ -1,0 +1,28 @@
+{
+  "name": "websum",
+  "version": "0.0.0",
+  "description": "Webpage summarizer",
+  "keywords": [
+    "summary",
+    "precis",
+    "abstract",
+    "recap"
+  ],
+  "homepage": "https://github.com/chbrown/websum",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chbrown/websum.git"
+  },
+  "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
+  "license": "MIT",
+  "dependencies": {
+    "htmlparser2": "*"
+  },
+  "devDependencies": {
+    "declarations": "*",
+    "typescript": "*"
+  },
+  "bin": {
+    "websum": "bin/websum"
+  }
+}
