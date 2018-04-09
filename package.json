@@ -13,11 +13,11 @@
   "author": "Christopher Brown <io@henrian.com>",
   "license": "MIT",
   "dependencies": {
-    "htmlparser2": "*"
+    "htmlparser2": "^3.9.0"
   },
   "devDependencies": {
-    "declarations": "*",
-    "typescript": "*"
+    "@types/htmlparser2": "^3.7.31",
+    "typescript": "^2.8.1"
   },
   "bin": {
     "websum": "bin/websum"
