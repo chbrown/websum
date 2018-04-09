@@ -1,6 +1,8 @@
 ## websum
 
-Webpage summarizer using tag name heuristic. Used in [brew-tour](https://github.com/chbrown/brew-tour).
+[![latest version published to npm](https://badge.fury.io/js/websum.svg)](https://www.npmjs.com/package/websum)
+
+Webpage summarizer using tag name heuristic. Used in [`brew-tour`](https://github.com/chbrown/brew-tour).
 
     npm install -g websum
     curl -s https://www.npmjs.com/package/brew-tour | websum | fold -s
@@ -14,4 +16,5 @@ Webpage summarizer using tag name heuristic. Used in [brew-tour](https://github.
 
 ## License
 
-Copyright 2015 Christopher Brown. [MIT Licensed](http://chbrown.github.io/licenses/MIT/#2015)
+Copyright © 2015–2018 Christopher Brown.
+[MIT Licensed](https://chbrown.github.io/licenses/MIT/#2015-2018)
