@@ -1,3 +1,4 @@
+import {Readable, Writable} from 'stream'
 import {Parser, Handler} from 'htmlparser2'
 
 export const tagScores = {
@@ -115,4 +116,38 @@ export function summarizeHtml(inputHtml: string,
   const parser = new Parser(handler, {decodeEntities: true})
   parser.write(inputHtml)
   parser.end()
+}
+
+function readToEnd(stream: Readable,
+                   callback: (error: Error, chunks?: any[]) => void) {
+  const chunks: Array<Buffer | string> = []
+  return stream
+  .on('error', callback)
+  .on('data', chunk => chunks.push(chunk))
+  .on('end', () => callback(null, chunks))
+}
+
+function convert(inputStream: Readable,
+                 outputStream: Writable,
+                 callback: (error: Error) => void) {
+  readToEnd(inputStream, (error, chunks) => {
+    if (error) return callback(error)
+
+    const inputHtml = chunks.map(chunk => chunk.toString()).join(' ')
+    summarizeHtml(inputHtml, 25, (error, result) => {
+      if (error) return callback(error)
+
+      outputStream.write(result, callback)
+    })
+  })
+}
+
+export function main() {
+  convert(process.stdin, process.stdout, error => {
+    if (error) {
+      console.error(error.toString())
+      process.exit(1)
+    }
+    process.exit(0)
+  })
 }
