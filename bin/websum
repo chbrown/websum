@@ -1,32 +1,32 @@
 #!/usr/bin/env node
-var summarizeHtml = require('..').summarizeHtml;
+const {summarizeHtml} = require('..')
 
 function readToEnd(stream, callback) {
-  var chunks = [];
+  const chunks = []
   return stream
-    .on('error', callback)
-    .on('data', function(chunk) { return chunks.push(chunk); })
-    .on('end', function() { return callback(null, chunks); });
+  .on('error', callback)
+  .on('data', chunk => chunks.push(chunk))
+  .on('end', () => callback(null, chunks))
 }
 
 function main(callback) {
-  readToEnd(process.stdin, function(error, chunks) {
-    if (error) return callback(error);
+  readToEnd(process.stdin, (error, chunks) => {
+    if (error) return callback(error)
 
-    var inputHtml = chunks.join(' ');
-    summarizeHtml(inputHtml, 25, function(error, result) {
-      if (error) return callback(error);
+    const inputHtml = chunks.join(' ')
+    summarizeHtml(inputHtml, 25, (error, result) => {
+      if (error) return callback(error)
 
-      console.log(result);
-      callback();
-    });
-  });
+      console.log(result)
+      callback()
+    })
+  })
 }
 
-main(function(error) {
+main((error) => {
   if (error) {
-    console.error(error.toString());
-    process.exit(1);
+    console.error(error.toString())
+    process.exit(1)
   }
-  process.exit(0);
-});
+  process.exit(0)
+})
